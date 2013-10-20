@@ -27,7 +27,24 @@ Route::get('/', function()
 	// Carousel images
 	$images = Image::all();
 
+	// Get template from configu
+	$template = Config::get('sitecore::template');
+
+	// Check if template is published
+	if (strstr($template, 'sitecore::'))
+	{
+		// The expected location of the published template file
+		$published = str_replace('sitecore::', 'flatturtle.sitecore.', $template);
+
+		// Check if it exists
+		if (View::exists($published))
+		{
+			// Use published template
+			$template = $published;
+		}
+	}
+
 	// Render the template
-	return View::make(Config::get('sitecore::template', 'template'), array('flatturtle' => $flatturtle, 'blocks' => $blocks, 'images' => $images));
+	return View::make($template, array('flatturtle' => $flatturtle, 'blocks' => $blocks, 'images' => $images));
 
 });
