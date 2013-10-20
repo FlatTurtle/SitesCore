@@ -23,6 +23,7 @@
 <body>
 
 
+    @if ($images)
     <section id="jumbo" class="carousel slide">
         <ol class="carousel-indicators">
         @foreach ($images as $i => $image)
@@ -55,7 +56,7 @@
             <span class="icon-next"></span>
         </a>
     </section>
-
+    @endif
 
 
     <nav class="colorful">
