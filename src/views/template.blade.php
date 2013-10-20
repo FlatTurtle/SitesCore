@@ -67,9 +67,11 @@
             </li>
             @endif
         @endforeach
+        @if (Config::get('sitecore::mailchimp'))
             <li>
-                <a href="#newsletter">Newsletter</a>
+                <a href="#newsletter">{{ Lang::get('sitecore::newsletter.title') }}</a>
             </li>
+        @endif
         </ul>
     </nav>
 
