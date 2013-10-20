@@ -27,8 +27,6 @@ Route::get('/', function()
 	// Carousel images
 	$images = Image::all();
 
-	App::abort(500, 'Invalid FlatTurtle configuration');
-
 	// Render the template
 	return View::make(Config::get('sitecore::template', 'template'), array('flatturtle' => $flatturtle, 'blocks' => $blocks, 'images' => $images));
 
