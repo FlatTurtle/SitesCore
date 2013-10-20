@@ -37,9 +37,6 @@ class InstallCommand extends Command {
 	 */
 	public function fire()
 	{
-		// Generate session key
-		$this->call('key:generate');
-
 		// Publish the configuration file
 		$this->call('config:publish', array('package' => 'flatturtle/sitecore'));
 
