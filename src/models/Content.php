@@ -9,26 +9,46 @@ class Content extends Model {
 	public static function all()
 	{
 		// Get content files
-		$files =\File::files(base_path() . '/' . self::$folder);
+		$files = \File::files(base_path() . '/' . self::$folder);
 
 		$models = array();
 
 		// Loop all files
 		foreach ($files as $file)
 		{
-			// Create block id based on file name
-			$id = pathinfo($file, PATHINFO_FILENAME);
-			$id = preg_replace('#[0-9]+-#', '', $id);
-			$id = str_replace(' ', '-', $id);
-			$id = strtolower($id);
+			// Generate cache based on file modification date
+			$cache_key = 'flatturtle.' . md5($file . filemtime($file));
 
-			// Create a new model
-			$model = new self;
-			$model->id = $id;
-			$model->type = pathinfo($file, PATHINFO_EXTENSION);
-			$model->raw = \File::get($file);
+			if (\Cache::has($cache_key))
+			{
+				// Get model from cache
+				$models[] = \Cache::get($cache_key);
+			}
+			else
+			{
+				// Create block id based on file name
+				$id = pathinfo($file, PATHINFO_FILENAME);
+				$id = preg_replace('#[0-9]+-#', '', $id);
+				$id = str_replace(' ', '-', $id);
+				$id = strtolower($id);
 
-			$models[] = $model;
+				// Create a new model
+				$model = new self;
+				$model->id = $id;
+				$model->type = pathinfo($file, PATHINFO_EXTENSION);
+				$model->html = \File::get($file);
+
+				// Parse markdown
+				if ($model->type == 'md')
+				{
+					$model->html = \Parsedown::instance()->parse($model->html);
+				}
+
+				// Store cache
+				\Cache::forever($cache_key, $model);
+
+				$models[] = $model;
+			}
 		}
 
 		return $models;
@@ -39,25 +59,6 @@ class Content extends Model {
 	| Accessors
 	|--------------------------------------------------------------------------
 	*/
-
-	public function getHtmlAttribute($value)
-	{
-		// Check if parsed already
-		if ($value) return $value;
-
-		// Parse markdown
-		if ($this->type == 'md')
-		{
-			$this->attributes['html'] = \Parsedown::instance()->parse($this->raw);
-		}
-		// Treat at HTML
-		else
-		{
-			$this->attributes['html'] = $this->raw;
-		}
-
-		return $this->attributes['html'];
-	}
 
 	public function getTitleAttribute($value)
 	{
