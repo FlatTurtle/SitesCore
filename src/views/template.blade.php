@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <title>{{ $flatturtle->title }}</title>
     <link href="{{ URL::asset('packages/flatturtle/sitecore/css/common.css') }}" rel="stylesheet">
+
+    @if (File::exists(public_path() . '/favicon.ico'))
     <link href="{{ URL::asset('favicon.ico') }}" rel="icon" type="image/x-icon">
+    @else
+    <link href="{{ URL::asset('packages/flatturtle/sitecore/favicon.ico') }}" rel="icon" type="image/x-icon">
+    @endif
 
     <style>
     .colorful, .btn-special {
