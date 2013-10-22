@@ -4,12 +4,13 @@ use Jenssegers\Model\Model;
 
 class Content extends Model {
 
-	protected static $folder = 'content';
-
 	public static function all()
 	{
+		// Get directory from config
+		$directory = \Config::get('sitecore::directory', 'content');
+
 		// Get content files
-		$files = \File::files(base_path() . '/' . self::$folder);
+		$files = \File::files(base_path() . '/' . $directory);
 
 		$models = array();
 
