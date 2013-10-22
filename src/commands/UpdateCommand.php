@@ -42,6 +42,8 @@ class UpdateCommand extends Command {
 
 		// Clear cache
 		$this->call('cache:clear');
+
+		$this->comment('FlatTurtle SiteCore updated');
 	}
 
 }

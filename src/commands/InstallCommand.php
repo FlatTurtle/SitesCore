@@ -45,6 +45,17 @@ class InstallCommand extends Command {
 
 		// Clear cache
 		$this->call('cache:clear');
+
+		// Content directory
+		$directory = \Config::get('sitecore::directory', 'content');
+
+		// Make sure content directory exists
+		if (!\File::exists($directory))
+		{
+			\File::makeDirectory($directory);
+		}
+
+		$this->comment('FlatTurtle SiteCore installed');
 	}
 
 }
