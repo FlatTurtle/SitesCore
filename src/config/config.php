@@ -45,6 +45,7 @@ return array(
 
 	'map' => true,
 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Mailchimp Form URL
@@ -85,7 +86,6 @@ return array(
 	*/
 
 	'social' => array(
-
 	)
 
 );

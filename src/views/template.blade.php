@@ -123,7 +123,7 @@
     @if (Config::get("sitecore::map"))
     <section id="map">
         <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-            src="https://maps.google.ro/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $flatturtle->latitude }},{{ $flatturtle->longitude }}&amp;z={{ $flatturtle->zoom }}&amp;iwloc=A&amp;output=embed&amp;iwloc=nea"
+            src="https://maps.flatturtle.com/{{ Config::get('sitecore::id') }}"
         ></iframe>
     </section>
     @endif
