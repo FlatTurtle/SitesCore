@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "erusev/parsedown": "dev-master#d733acc",
+        "erusev/parsedown": "dev-master#f43f54b",
         "guzzle/http": "3.7.*@dev",
         "jenssegers/model": "dev-master"
     },
