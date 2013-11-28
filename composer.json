@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "erusev/parsedown": "dev-master#f43f54b",
+        "michelf/php-markdown": "1.3.*@dev",
         "guzzle/http": "3.7.*@dev",
         "jenssegers/model": "dev-master"
     },

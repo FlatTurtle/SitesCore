@@ -1,6 +1,7 @@
 <?php namespace Flatturtle\Sitecore\Models;
 
 use Jenssegers\Model\Model;
+use \Michelf\MarkdownExtra;
 
 class Content extends Model {
 
@@ -42,7 +43,8 @@ class Content extends Model {
 				// Parse markdown
 				if ($model->type == 'md')
 				{
-					$model->html = \Parsedown::instance()->parse($model->html);
+					$parser = new MarkdownExtra;
+					$model->html = $parser->transform($model->html);
 				}
 
 				// Store cache
