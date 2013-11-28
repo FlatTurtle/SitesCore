@@ -1,7 +1,8 @@
 <?php namespace Flatturtle\Sitecore\Models;
 
 use Jenssegers\Model\Model;
-use \Michelf\MarkdownExtra;
+use Ciconia\Ciconia;
+use Flatturtle\Sitecore\GridExtension;
 
 class Content extends Model {
 
@@ -43,8 +44,10 @@ class Content extends Model {
 				// Parse markdown
 				if ($model->type == 'md')
 				{
-					$parser = new MarkdownExtra;
-					$model->html = $parser->transform($model->html);
+					$ciconia = new Ciconia();
+					$ciconia->addExtension(new GridExtension());
+
+					$model->html = $ciconia->render($model->html);
 				}
 
 				// Store cache
