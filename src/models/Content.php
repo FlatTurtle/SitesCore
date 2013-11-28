@@ -2,6 +2,7 @@
 
 use Jenssegers\Model\Model;
 use Ciconia\Ciconia;
+use Ciconia\Extension\Gfm;
 use Flatturtle\Sitecore\GridExtension;
 
 class Content extends Model {
@@ -46,6 +47,8 @@ class Content extends Model {
 				{
 					$ciconia = new Ciconia();
 					$ciconia->addExtension(new GridExtension());
+					$ciconia->addExtension(new Gfm\InlineStyleExtension());
+					$ciconia->addExtension(new Gfm\UrlAutoLinkExtension());
 
 					$model->html = $ciconia->render($model->html);
 				}
