@@ -38,7 +38,7 @@ class UpdateCommand extends Command {
 	public function fire()
 	{
 		// Flatturtle not installed
-		if (!File::exists(app_path() . '/config/packages/flatturtle/sitecore/config.php'))
+		if (!\File::exists(app_path() . '/config/packages/flatturtle/sitecore/config.php'))
 		{
 			return $this->call('flatturtle:install');
 		}
