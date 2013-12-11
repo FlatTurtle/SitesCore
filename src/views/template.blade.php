@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>{{ $flatturtle->title }}</title>
     <link href="{{ URL::asset('packages/flatturtle/sitecore/css/common.css') }}" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="https://fast.fonts.com/cssapi/66253153-9c89-413c-814d-60d3ba0d6ac2.css"/>
 
     @if (File::exists(public_path() . '/favicon.ico'))
     <link href="{{ URL::asset('favicon.ico') }}" rel="icon" type="image/x-icon">
@@ -12,24 +13,47 @@
     @endif
 
     <style>
-    .colorful, .btn-special {
+    .colorful {
         background-color: {{ $flatturtle->color }};
     }
 
-    #jumbo {
-        border-top: 5px solid {{ $flatturtle->color }};
+    .highlight {
+        color: {{ $flatturtle->color }};
     }
 
-    h1, a, a:hover, .carousel-control:hover {
+    #content a {
         color: {{ $flatturtle->color }};
     }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="container">
+            <a id="brand" href="#">{{ $flatturtle->title }}</a>
+            <ul>
+            @foreach ($blocks as $block)
+                @if ($block->title)
+                <li>
+                    <a href="#{{ $block->id }}">{{ $block->title }}</a>
+                </li>
+                @endif
+            @endforeach
+            @if (Config::get('sitecore::mailchimp'))
+                <li>
+                    <a href="#newsletter">{{ Lang::get('sitecore::newsletter.title') }}</a>
+                </li>
+            @endif
+            </ul>
+        </div>
+    </nav>
+
 
     @if ($images)
     <section id="jumbo" class="carousel slide">
+        <div id="top-blur"></div>
+        <div id="bottom-blur"></div>
+
         <ol class="carousel-indicators">
         @foreach ($images as $i => $image)
             @if ($i == 0)
@@ -55,31 +79,13 @@
         </div>
 
         <a class="left carousel-control" href="#jumbo" data-slide="prev">
-            <span class="icon-prev"></span>
+            <img src="{{ URL::asset('packages/flatturtle/sitecore/images/paddle_previous.png') }}">
         </a>
         <a class="right carousel-control" href="#jumbo" data-slide="next">
-            <span class="icon-next"></span>
+            <img src="{{ URL::asset('packages/flatturtle/sitecore/images/paddle_next.png') }}">
         </a>
     </section>
     @endif
-
-
-    <nav class="colorful">
-        <ul>
-        @foreach ($blocks as $block)
-            @if ($block->title)
-            <li>
-                <a href="#{{ $block->id }}">{{ $block->title }}</a>
-            </li>
-            @endif
-        @endforeach
-        @if (Config::get('sitecore::mailchimp'))
-            <li>
-                <a href="#newsletter">{{ Lang::get('sitecore::newsletter.title') }}</a>
-            </li>
-        @endif
-        </ul>
-    </nav>
 
 
 
