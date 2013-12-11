@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "kzykhys/ciconia": "dev-master",
+        "erusev/parsedown": "dev-master",
         "guzzle/http": "3.7.*@dev",
         "jenssegers/model": "dev-master"
     },

@@ -1,9 +1,8 @@
 <?php namespace Flatturtle\Sitecore\Models;
 
+use Illuminate\Support\Collection;
 use Jenssegers\Model\Model;
-use Ciconia\Ciconia;
-use Ciconia\Extension\Gfm;
-use Flatturtle\Sitecore\GridExtension;
+use Parsedown;
 
 class Content extends Model {
 
@@ -23,14 +22,10 @@ class Content extends Model {
 			// Generate cache based on file modification date
 			$cache_key = 'flatturtle.' . md5($file . filemtime($file));
 
-			if (\Cache::has($cache_key))
+			// Try to get model from cache
+			$model = Cache::rememberForever($cache_key, function() use ($file)
 			{
-				// Get model from cache
-				$models[] = \Cache::get($cache_key);
-			}
-			else
-			{
-				// Create block id based on file name
+			    // Create block id based on file name
 				$id = pathinfo($file, PATHINFO_FILENAME);
 				$id = preg_replace('#[0-9]+-#', '', $id);
 				$id = str_replace(' ', '-', $id);
@@ -45,22 +40,17 @@ class Content extends Model {
 				// Parse markdown
 				if ($model->type == 'md')
 				{
-					$ciconia = new Ciconia();
-					$ciconia->addExtension(new GridExtension());
-					$ciconia->addExtension(new Gfm\InlineStyleExtension());
-					$ciconia->addExtension(new Gfm\UrlAutoLinkExtension());
-
-					$model->html = $ciconia->render($model->html);
+					$model->html = Parsedown::instance()->parse($model->html);
 				}
 
-				// Store cache
-				\Cache::forever($cache_key, $model);
+				return $model;
+			});
 
-				$models[] = $model;
-			}
+			// Add model to list
+			$models[] = $model;
 		}
 
-		return $models;
+		return new Collection($models);
 	}
 
 	/*
