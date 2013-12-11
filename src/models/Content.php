@@ -3,16 +3,19 @@
 use Illuminate\Support\Collection;
 use Jenssegers\Model\Model;
 use Parsedown;
+use Cache;
+use File;
+use Config;
 
 class Content extends Model {
 
 	public static function all()
 	{
 		// Get directory from config
-		$directory = \Config::get('sitecore::directory', 'content');
+		$directory = Config::get('sitecore::directory', 'content');
 
 		// Get content files
-		$files = \File::files(base_path() . '/' . $directory);
+		$files = File::files(base_path() . '/' . $directory);
 
 		$models = array();
 
@@ -35,7 +38,7 @@ class Content extends Model {
 				$model = new self;
 				$model->id = $id;
 				$model->type = pathinfo($file, PATHINFO_EXTENSION);
-				$model->html = \File::get($file);
+				$model->html = File::get($file);
 
 				// Parse markdown
 				if ($model->type == 'md')
