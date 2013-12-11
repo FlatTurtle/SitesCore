@@ -35,7 +35,7 @@ class Content extends Model {
 				$id = strtolower($id);
 
 				// Create a new model
-				$model = new self;
+				$model = new Content;
 				$model->id = $id;
 				$model->type = pathinfo($file, PATHINFO_EXTENSION);
 				$model->html = File::get($file);
