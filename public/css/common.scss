@@ -229,6 +229,13 @@ nav {
 
 }
 
+.anchor {
+	display: block;
+	position: relative;
+	top: -100px;
+	visibility: hidden;
+}
+
 #content {
 
 	$color: #fafafa;

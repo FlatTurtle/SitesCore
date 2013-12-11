@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{{ $flatturtle->title }}</title>
-    <link href="{{ URL::asset('packages/flatturtle/sitecore/css/common.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('packages/flatturtle/sitecore/css/common.css' . filemtime(public_path() . '/packages/flatturtle/sitecore/css/common.css')) }}" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://fast.fonts.com/cssapi/66253153-9c89-413c-814d-60d3ba0d6ac2.css"/>
 
     @if (File::exists(public_path() . '/favicon.ico'))
@@ -93,6 +93,7 @@
     @foreach ($blocks as $block)
 
     <div class="block">
+        <a class="anchor" id="{{ $block->id }}"></a>
         <div id="{{ $block->id }}" class="container">
             {{ $block->html }}
         </div>
