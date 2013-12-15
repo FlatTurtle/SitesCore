@@ -4,6 +4,8 @@ use DateTime;
 use Exception;
 use Lang;
 use Config;
+use Validator;
+use Input;
 use Jenssegers\Model\Model;
 use Guzzle\Http\Client;
 
@@ -12,15 +14,25 @@ class Reservation extends Model {
 	protected $baseUrl = 'https://reservations.flatturtle.com/';
 
 	/**
-	 * Create a reservation
+	 * Save the reservation object
 	 *
 	 * @return bool
 	 */
 	public function save()
 	{
+		// Attribute validation rules
+		$validator = Validator::make($this->attributes, array(
+			'company' => 'required',
+		    'email' => 'required|email',
+		    'name' => 'required',
+		    'cluster' => 'required',
+		    'from' => 'required',
+		    'to' => 'required',
+		    'type' => 'required',
+		));
+
 		// Create datetime objects
-		try
-		{
+		try {
 			$from = new DateTime($this->from);
 			$to = new DateTime($this->to);
 		}
@@ -29,7 +41,6 @@ class Reservation extends Model {
 			throw new Exception(Lang::get('sitecore::reservations.bad_date'));
 		}
 
-		// Prepare data
 		$data = array(
 			'thing' => $this->baseUrl . $this->cluster . '/things/' . $this->name,
 			'type' => $this->type,
@@ -46,6 +57,13 @@ class Reservation extends Model {
 			'announce' => $this->announce ?: array(),
 		);
 
+		// Throw exception
+		if ($validator->fails())
+		{
+			$errors = $validator->messages();
+			throw new Exception(implode(', ', $errors->all()));
+		}
+
 		// Create request
 		$client = new Client($this->baseUrl);
 		$request = $client->post($this->cluster . '/reservations', null, json_encode($data));
@@ -56,12 +74,10 @@ class Reservation extends Model {
 
 		try
 		{
-			// Send request
 			$response = $request->send();
 		}
 		catch (\Exception $e)
 		{
-			// Get error response
 			$response = $e->getResponse();
 
 			// Bad credentials
