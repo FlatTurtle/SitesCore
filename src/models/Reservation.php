@@ -13,11 +13,6 @@ class Reservation extends Model {
 
 	protected $baseUrl = 'https://reservations.flatturtle.com/';
 
-	/**
-	 * Save the reservation object
-	 *
-	 * @return bool
-	 */
 	public function save()
 	{
 		// Attribute validation rules
@@ -26,10 +21,17 @@ class Reservation extends Model {
 		    'email' => 'required|email',
 		    'name' => 'required',
 		    'cluster' => 'required',
-		    'from' => 'required',
-		    'to' => 'required',
+		    'from' => array('required', 'regex:#[0-9]{1,2}:[0-9]{2}#'),
+		    'to' => array('required', 'regex:#[0-9]{1,2}:[0-9]{2}#'),
 		    'type' => 'required',
 		));
+
+		// Throw exception
+		if ($validator->fails())
+		{
+			$errors = $validator->messages();
+			throw new Exception(implode('<br>', $errors->all()));
+		}
 
 		// Create datetime objects
 		try {
@@ -56,13 +58,6 @@ class Reservation extends Model {
 			'subject' => $this->subject ?: 'No subject',
 			'announce' => $this->announce ?: array(),
 		);
-
-		// Throw exception
-		if ($validator->fails())
-		{
-			$errors = $validator->messages();
-			throw new Exception(implode(', ', $errors->all()));
-		}
 
 		// Create request
 		$client = new Client($this->baseUrl);
