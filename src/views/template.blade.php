@@ -44,6 +44,11 @@
                     <a href="#newsletter">{{ Lang::get('sitecore::newsletter.title') }}</a>
                 </li>
             @endif
+            @if ($reservations)
+                <li>
+                    <a href="#reservations" class="btn colorful">{{ Lang::get('sitecore::reservations.title') }}</a>
+                </li>
+            @endif
             </ul>
         </div>
     </nav>
