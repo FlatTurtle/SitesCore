@@ -3,19 +3,44 @@
 use Flatturtle\Sitecore\Models\Content;
 use Flatturtle\Sitecore\Models\FlatTurtle;
 use Flatturtle\Sitecore\Models\Image;
+use Flatturtle\Sitecore\Models\Reservation;
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Reservations API "proxy"
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
 */
 
-Route::get('/', function()
+Route::post('/reserve', function()
+{
+	// Create reservation object
+	$reservation = new Reservation;
+	$reservation->name = Input::get('name');
+	$reservation->type = Input::get('type');
+	$reservation->cluster = Input::get('cluster');
+	$reservation->company = Input::get('company');
+	$reservation->email = Input::get('email');
+	$reservation->comment = Input::get('comment');
+	$reservation->from = Input::get('from');
+	$reservation->to = Input::get('to');
+
+	// Any exceptions that get thrown will be returned as a json error message.
+	// Only when the reservation is successful, we need to return a success message.
+	$response = $reservation->save();
+
+	return Response::json(array(
+		'message' => Lang::get('sitecore::reservations.success')
+	));
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| Main site route
+|--------------------------------------------------------------------------
+*/
+
+Route::any('/', function()
 {
 	// Content blocks array
 	$blocks = Content::all();
@@ -44,7 +69,10 @@ Route::get('/', function()
 		}
 	}
 
+	// Check if reservations are enabled
+	$reservations = Config::has('sitecore::reservation_password') && $flatturtle->interface->clustername;
+
 	// Render the template
-	return View::make($template, array('flatturtle' => $flatturtle, 'blocks' => $blocks, 'images' => $images));
+	return View::make($template, array('flatturtle' => $flatturtle, 'blocks' => $blocks, 'images' => $images, 'reservations' => $reservations));
 
 });

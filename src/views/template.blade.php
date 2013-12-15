@@ -14,11 +14,11 @@
 
     <style>
     .colorful {
-        background-color: {{ $flatturtle->color }};
+        background-color: {{ $flatturtle->color }} !important;
     }
 
     .highlight {
-        color: {{ $flatturtle->color }};
+        color: {{ $flatturtle->color }} !important;
     }
 
     #content a {
@@ -121,6 +121,49 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </section>
+    @endif
+
+
+
+    @if ($reservations)
+    <section id="reservations" data-cluster="{{ $flatturtle->interface->clustername }}" class="block">
+        <div class="container">
+            <h1>{{ Lang::get('sitecore::reservations.title') }}</h1>
+            <h2>{{ Lang::get('sitecore::reservations.subtitle') }}</h2>
+
+            <div id="things"></div>
+
+            <div id="datepicker">
+                <h2>{{ Lang::get('sitecore::reservations.date') }}</h2>
+                <input type="text" class="date" required placeholder="click me">
+            </div>
+
+            <div id="timepicker">
+
+                <h2>{{ Lang::get('sitecore::reservations.time') }}</h2>
+
+                <div id="bar"></div>
+                <div id="labels"></div>
+
+                <div id="selection">
+                {{ Lang::get('sitecore::reservations.from') }} <input type="text" id="from" placeholder="00:00"> &nbsp; {{ Lang::get('sitecore::reservations.to') }} <input type="text" id="to" placeholder="00:00">
+                </div>
+
+            </div>
+
+            <div id="details">
+                <h2>{{ Lang::get('sitecore::reservations.details') }}</h2>
+
+                {{ Lang::get('sitecore::reservations.company') }} <input type="text" id="company" required><br>
+                {{ Lang::get('sitecore::reservations.email') }} <input type="email" id="email" required><br>
+                <textarea id="comment" placeholder="{{ Lang::get('sitecore::reservations.comment') }}"></textarea><br>
+                <div id="message"></div>
+
+                <button class="btn colorful">{{ Lang::get('sitecore::reservations.button') }}</button>
+            </div>
+
         </div>
     </section>
     @endif
