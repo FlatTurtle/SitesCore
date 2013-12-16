@@ -9,8 +9,8 @@
     ],
     "require": {
         "erusev/parsedown": "dev-master",
-        "guzzle/http": "3.7.*@dev",
-        "jenssegers/model": "dev-master"
+        "jenssegers/model": "*",
+        "guzzle/guzzle": "~3.7"
     },
     "autoload": {
         "classmap": [
