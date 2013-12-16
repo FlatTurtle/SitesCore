@@ -12,7 +12,7 @@ return array(
 
     'company' => 'Company:',
     'email' => 'Email:',
-    'comment' => 'Comment (optional)',
+    'comment' => 'Description (optional)',
     'button' => 'Submit reservation',
 
     'success' => 'Reservation created',
