@@ -70,7 +70,7 @@ Route::any('/', function()
 	}
 
 	// Check if reservations are enabled
-	$reservations = Config::has('sitecore::reservation_password') && $flatturtle->interface->clustername;
+	$reservations = Config::has('sitecore::reservation_password') && isset($flatturtle->interface->clustername);
 
 	// Render the template
 	return View::make($template, array('flatturtle' => $flatturtle, 'blocks' => $blocks, 'images' => $images, 'reservations' => $reservations));
