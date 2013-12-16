@@ -594,6 +594,13 @@ nav {
 			color: $font-color;
 			font-family: "Soho Gothic W01 Bold", sans-serif;
 		}
+
+		&.ui-state-active {
+			color: $font-color;
+			font-family: "Soho Gothic W01 Bold", sans-serif;
+			border: 1px solid $line-color;
+			border-radius: 5px;
+		}
 	}
 }
 
