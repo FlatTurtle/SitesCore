@@ -520,7 +520,7 @@ nav {
 			font-size: 150%;
 			padding: 5px 20px;
 
-			&:hover {
+			&:hover, &:focus {
 				color: #CCC;
 			}
 		}
