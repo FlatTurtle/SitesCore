@@ -203,12 +203,14 @@
 
 
 
+    @if (App::environment() == 'production')
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/all.js?v=' . filemtime(public_path() . '/packages/flatturtle/sitecore/javascript/all.js')) }}"></script>
-    <script>
-    $('.carousel').carousel({
-        interval: 5000
-    });
-    </script>
+    @else
+    <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/jquery.js') }}"></script>
+    <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/jquery.datepicker.js?') }}"></script>
+    <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/carousel.js') }}"></script>
+    <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/script.js') }}"></script>
+    @endif
 
 
 

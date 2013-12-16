@@ -3,6 +3,11 @@ jQuery.fn.exists = function(){return this.length>0;}
 
 $(document).ready(function(){
 
+    // Carousel
+    $('.carousel').carousel({
+        interval: 5000
+    });
+
     // Open external links in new window
     $("a[href^='http']").not("[href*='" + location.hostname + "']").attr('target', '_blank');
 
@@ -340,9 +345,7 @@ $(document).ready(function(){
                 }
                 else if (time instanceof Date)
                 {
-                    // Dirty fix timezone!
-                    seconds = time.getTime() + 60*60*1000;
-                    seconds = seconds % (86400 * 1000) / 1000;
+                    seconds = time.getTime() % (86400 * 1000) / 1000;
                 }
 
                 return seconds;
