@@ -190,7 +190,7 @@
             @foreach (Config::get("sitecore::social") as $service => $url)
 
                 <a href="{{ $url }}" target="_blank">
-                    <i class="icon-{{ $service }}"></i>
+                    <i class="fa fa-{{ $service }}"></i>
                 </a>
 
             @endforeach
