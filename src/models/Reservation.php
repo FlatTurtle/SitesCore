@@ -54,7 +54,7 @@ class Reservation extends Model {
 			'subject' => $this->subject,
 			'comment' => $this->comment ?: 'No comment',
 			'customer' => array(
-				'mail' => $this->email,
+				'email' => $this->email,
 				'company' => $this->company,
 			),
 			'announce' => $this->announce ?: array(),
@@ -76,24 +76,26 @@ class Reservation extends Model {
 		{
 			$response = $e->getResponse();
 
-			// Bad credentials
-			if ($response->getStatusCode() == 401)
-			{
-				throw new Exception(Lang::get('sitecore::reservations.bad_credentials'));
-			}
-
 			// Get JSON error message
 			$json = $response->json();
-			if (isset($json['error']) && $error = $json['error'])
-			{
-				// Entity not available
-				if (stristr($error, 'not available at that time'))
-				{
-					throw new Exception(Lang::get('sitecore::reservations.not_available'));
-				}
+			$errors = $json['errors'];
 
-				throw new Exception($error);
+			// Only first error at this moment
+			$error = reset($errors);
+			$type = strtolower($error['type']);
+
+			// Replace some characters
+			$type = str_replace(array(' ', '_', '.'), '-', $type);
+
+			if (Lang::has("sitecore::reservations.$type"))
+			{
+				throw new Exception(Lang::get("sitecore::reservations.$type"));
 			}
+			else
+			{
+				throw new Exception(Lang::get("sitecore::reservations.error") . ' (' . $error['message'] . ')');
+			}
+
 		}
 
 		return true;

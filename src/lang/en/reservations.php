@@ -19,8 +19,8 @@ return array(
     'success' => 'Reservation created',
 
     // Exceptions
-    'bad_credentials' => 'Invalid credentials',
-    'not_available' => 'Entity not available at that time',
-    'bad_date' => "Bad date/time format",
+    'error' => 'Something went wrong.',
+    'thing-unavailable' => 'The thing is unavailable at that time.',
+    'invalid-credentials' => 'The credentials you provided are invalid.',
 
 );
