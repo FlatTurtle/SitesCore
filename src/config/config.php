@@ -39,7 +39,7 @@ return array(
 	| Carousel
 	|--------------------------------------------------------------------------
 	|
-	| Top image slideshow configuration.
+	| Top image slideshow configuration. Default carousel height is 600px.
 	|
 	*/
 
@@ -51,7 +51,8 @@ return array(
 	| FlatTurtle map
 	|--------------------------------------------------------------------------
 	|
-	| Enable or disable the FlatTurtle map at the bottom of the page.
+	| Enable or disable the FlatTurtle map at the bottom of the page. Default
+	| map height is 450px.
 	|
 	*/
 
