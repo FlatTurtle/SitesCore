@@ -55,7 +55,7 @@
 
 
     @if ($images)
-    <section id="jumbo" class="carousel slide">
+    <section id="jumbo" class="carousel slide" style="height: {{ Config::get('sitecore::carousel_height', '600px') }}">
         <div id="top-blur"></div>
         <div id="bottom-blur"></div>
 
@@ -177,7 +177,7 @@
 
 
     @if (Config::get("sitecore::map"))
-    <section id="map">
+    <section id="map" style="height: {{ Config::get('sitecore::map_height', '450px') }}">
         <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
             src="https://maps.flatturtle.com/{{ Config::get('sitecore::id') }}"
         ></iframe>

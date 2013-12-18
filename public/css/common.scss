@@ -75,7 +75,7 @@ h1.big {
 	width: 100%;
 
 	.carousel-inner {
-		height: $carousel-height;
+		height: 100%;
 	}
 
 	#top-blur, #bottom-blur {
@@ -140,7 +140,9 @@ h1.big {
 		}
 
 		img {
-			margin-top: ($carousel-height / 2) - 65;
+			top: 50%;
+			position: absolute;
+			margin-top: -65px;
 		}
 	}
 }
