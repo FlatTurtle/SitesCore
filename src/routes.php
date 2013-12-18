@@ -20,6 +20,7 @@ Route::post('/reserve', function()
 	$reservation->cluster = Input::get('cluster');
 	$reservation->company = Input::get('company');
 	$reservation->email = Input::get('email');
+	$reservation->subject = Input::get('subject');
 	$reservation->comment = Input::get('comment');
 	$reservation->from = Input::get('from');
 	$reservation->to = Input::get('to');

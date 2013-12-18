@@ -19,6 +19,7 @@ class Reservation extends Model {
 		$validator = Validator::make($this->attributes, array(
 			'company' => 'required',
 		    'email' => 'required|email',
+		    'subject' => 'required',
 		    'name' => 'required',
 		    'cluster' => 'required',
 		    'from' => array('required', 'regex:#[0-9]{1,2}:[0-9]{2}#'),
@@ -48,14 +49,14 @@ class Reservation extends Model {
 			'type' => $this->type,
 			'time' => array(
 				'from' => $from->format('c'),
-				'to' => $to->format('c')
+				'to' => $to->format('c'),
 			),
+			'subject' => $this->subject,
 			'comment' => $this->comment ?: 'No comment',
 			'customer' => array(
 				'mail' => $this->email,
 				'company' => $this->company,
 			),
-			'subject' => $this->subject ?: 'No subject',
 			'announce' => $this->announce ?: array(),
 		);
 

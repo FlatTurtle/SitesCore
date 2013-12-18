@@ -12,6 +12,7 @@ return array(
 
     'company' => 'Company:',
     'email' => 'Email:',
+    'subject' => 'Subject:',
     'comment' => 'Description (optional)',
     'button' => 'Submit reservation',
 
