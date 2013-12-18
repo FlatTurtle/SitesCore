@@ -65,7 +65,7 @@ class Reservation extends Model {
 		$request = $client->post($this->cluster . '/reservations', null, json_encode($data));
 
 		// Add basic auth
-		$password = Config::get('sitecore::reservation_password');
+		$password = Config::get('sitecore::passwords.reservations');
 		$request->setAuth($this->cluster, $password);
 
 		try
