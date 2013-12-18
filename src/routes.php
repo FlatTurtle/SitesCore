@@ -21,6 +21,7 @@ Route::post('/reserve', function()
 	$reservation->company = Input::get('company');
 	$reservation->email = Input::get('email');
 	$reservation->subject = Input::get('subject');
+	$reservation->announce = Input::get('announce');
 	$reservation->comment = Input::get('comment');
 	$reservation->from = Input::get('from');
 	$reservation->to = Input::get('to');

@@ -52,6 +52,7 @@ class Reservation extends Model {
 				'to' => $to->format('c'),
 			),
 			'subject' => $this->subject,
+			'announce' => $this->announce,
 			'comment' => $this->comment ?: 'No comment',
 			'customer' => array(
 				'email' => $this->email,
@@ -99,6 +100,27 @@ class Reservation extends Model {
 		}
 
 		return true;
+	}
+
+	/*
+	|--------------------------------------------------------------------------
+	| Mutators
+	|--------------------------------------------------------------------------
+	*/
+
+	public function setAnnounceAttribute($value)
+	{
+		// Replace delimiters
+		$value = str_replace(array(';'), ',', $value);
+
+		// Explode & loop
+		$parts = explode(',', $value);
+		foreach ($parts as &$part)
+		{
+			$part = trim($part);
+		}
+
+		$this->attributes['announce'] = $parts;
 	}
 
 }

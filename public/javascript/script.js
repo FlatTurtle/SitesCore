@@ -152,6 +152,7 @@ $(document).ready(function(){
                     company:    $('#reservations input#company').val(),
                     email:      $('#reservations input#email').val(),
                     subject:    $('#reservations input#subject').val(),
+                    announce:   $('#reservations input#announce').val(),
                     from:       date + " " + from,
                     to:         date + " " + to,
                     comment:    $('#reservations textarea#comment').val(),
