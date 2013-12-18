@@ -161,10 +161,10 @@
             <div id="details">
                 <h2>{{ Lang::get('sitecore::reservations.details') }}</h2>
 
-                {{ Lang::get('sitecore::reservations.company') }} <input type="text" id="company" required><br>
-                {{ Lang::get('sitecore::reservations.email') }} <input type="email" id="email" required><br>
-                {{ Lang::get('sitecore::reservations.subject') }} <input type="text" id="subject" required><br>
-                {{ Lang::get('sitecore::reservations.announce') }} <input type="text" id="announce" required><br>
+                <label>{{ Lang::get('sitecore::reservations.company') }}</label> <input type="text" id="company" required><br>
+                <label>{{ Lang::get('sitecore::reservations.email') }}</label> <input type="email" id="email" required><br>
+                <label>{{ Lang::get('sitecore::reservations.subject') }}</label> <input type="text" id="subject" required><br>
+                <label>{{ Lang::get('sitecore::reservations.announce') }}</label> <input type="text" id="announce" required><br>
 
                 <textarea id="comment" placeholder="{{ Lang::get('sitecore::reservations.comment') }}"></textarea><br>
                 <div id="message"></div>

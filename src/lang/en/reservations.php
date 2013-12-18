@@ -13,6 +13,7 @@ return array(
     'company' => 'Company:',
     'email' => 'Email:',
     'subject' => 'Subject:',
+    'announce' => 'Speakers:',
     'comment' => 'Description (optional)',
     'button' => 'Submit reservation',
 
