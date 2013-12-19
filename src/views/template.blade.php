@@ -12,6 +12,7 @@
     <link href="{{ URL::asset('packages/flatturtle/sitecore/favicon.ico') }}" rel="icon" type="image/x-icon">
     @endif
 
+    @section('style')
     <style>
     .colorful {
         background-color: {{ $flatturtle->color }} !important;
@@ -25,8 +26,12 @@
         color: {{ $flatturtle->color }};
     }
     </style>
+    @show
+
 </head>
 <body>
+
+@section('navigation')
 
     <nav>
         <div class="container">
@@ -53,6 +58,10 @@
         </div>
     </nav>
 
+@show
+
+
+@section('carousel')
 
     @if ($images)
     <section id="jumbo" class="carousel slide" style="height: {{ Config::get('sitecore::carousel_height', '600px') }}">
@@ -92,7 +101,10 @@
     </section>
     @endif
 
+@show
 
+
+@section('content')
 
     <section id="content">
     @foreach ($blocks as $block)
@@ -107,7 +119,10 @@
     @endforeach
     </section>
 
+@show
 
+
+@section('newsletter')
 
     @if (Config::get('sitecore::mailchimp'))
     <section id="newsletter" class="block colorful">
@@ -130,7 +145,10 @@
     </section>
     @endif
 
+@show
 
+
+@section('reservations')
 
     @if ($reservations)
     <section id="reservations" data-cluster="{{ $flatturtle->interface->clustername }}" class="block">
@@ -176,7 +194,10 @@
     </section>
     @endif
 
+@show
 
+
+@section('map')
 
     @if (Config::get("sitecore::map"))
     <section id="map" style="height: {{ Config::get('sitecore::map_height', '450px') }}">
@@ -186,7 +207,10 @@
     </section>
     @endif
 
+@show
 
+
+@section('footer')
 
     <section id="social" class="block colorful">
         <div class="container">
@@ -204,7 +228,10 @@
         </div>
     </section>
 
+@show
 
+
+@section('javascript')
 
     @if (App::environment() == 'production')
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/all.js?v=' . filemtime(public_path() . '/packages/flatturtle/sitecore/javascript/all.js')) }}"></script>
@@ -214,7 +241,6 @@
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/carousel.js') }}"></script>
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/script.js') }}"></script>
     @endif
-
 
 
     @if (Config::get('sitecore::analytics'))
@@ -231,6 +257,7 @@
     </script>
     @endif
 
+@show
 
 </body>
 </html>
