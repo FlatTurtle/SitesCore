@@ -5,6 +5,7 @@ return array(
     'title' => 'Reservations',
     'subtitle' => 'Click on an item below to create a reservation.',
     'date' => 'Select a date',
+    'click-me' => 'Click me',
     'time' => 'Select time period',
     'details' => 'Enter your details',
     'from' => 'From:',

@@ -142,7 +142,7 @@
 
             <div id="datepicker">
                 <h2>{{ Lang::get('sitecore::reservations.date') }}</h2>
-                <input type="text" class="date" required placeholder="click me">
+                <input type="text" class="date" required placeholder="{{ Lang::get('sitecore::reservations.click-me') }}">
             </div>
 
             <div id="timepicker">
