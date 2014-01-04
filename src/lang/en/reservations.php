@@ -22,7 +22,7 @@ return array(
 
     // Exceptions
     'error' => 'Something went wrong.',
-    'thing-unavailable' => 'The thing is unavailable at that time.',
+    'thing-unavailable' => 'Unable to book at that time.',
     'invalid-credentials' => 'The credentials you provided are invalid.',
 
 );
