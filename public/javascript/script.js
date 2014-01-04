@@ -167,6 +167,18 @@ $(document).ready(function(){
             });
 
 
+            // Load companies
+            $.getJSON("https://reservations.flatturtle.com/" + cluster + "/companies", function(data)
+            {
+                for (var i in data)
+                {
+                    var company = data[i];
+                    $('#reservations #details #company').append('<option value="' + company.name + '">' + company.name + '</option>');
+                }
+            });
+
+
+            // Submit reservation
             $('#reservations #details button').click(function()
             {
                 var from = $('#reservations #timepicker #from').val();
@@ -178,7 +190,7 @@ $(document).ready(function(){
                     name:       thing.name,
                     type:       thing.type,
                     cluster:    cluster,
-                    company:    $('#reservations input#company').val(),
+                    company:    $('#reservations select#company').val(),
                     email:      $('#reservations input#email').val(),
                     subject:    $('#reservations input#subject').val(),
                     announce:   $('#reservations input#announce').val(),
@@ -305,8 +317,6 @@ $(document).ready(function(){
              */
             function checkSelection()
             {
-                console.log('check selection');
-
                 var from = $('#reservations #timepicker #from').val();
                 if (from)
                 {
@@ -355,6 +365,17 @@ $(document).ready(function(){
 
                 // Only continue with both values
                 if (!from || !to) return;
+
+                // Sawp times
+                if (from > to)
+                {
+                    $('#reservations #timepicker #from').val(to);
+                    $('#reservations #timepicker #to').val(from);
+                    from = $('#reservations #timepicker #from').val();
+                    to = $('#reservations #timepicker #to').val();
+                    $('#reservations #timepicker #from').trigger('change');
+                    $('#reservations #timepicker #to').trigger('change');
+                }
 
                 // Convert time to seconds
                 from = convertToSeconds(from);

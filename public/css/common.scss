@@ -556,11 +556,13 @@ nav {
 	#details {
 		text-align: center;
 
-		textarea, input {
+		textarea, input, select {
 			border: 1px solid $line-color;
 			border-radius: 5px;
 			padding: 5px 10px;
 			margin-bottom: 10px;
+			background-color: #FFF;
+			min-width: 220px;
 		}
 
 		label {
@@ -569,7 +571,7 @@ nav {
 			margin-left: -150px;
 		}
 
-		input {
+		input, select {
 			margin-left: 5px;
 		}
 

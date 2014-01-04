@@ -179,7 +179,7 @@
             <div id="details">
                 <h2>{{ Lang::get('sitecore::reservations.details') }}</h2>
 
-                <label>{{ Lang::get('sitecore::reservations.company') }}</label> <input type="text" id="company" required><br>
+                <label>{{ Lang::get('sitecore::reservations.company') }}</label> <select id="company" required></select><br>
                 <label>{{ Lang::get('sitecore::reservations.email') }}</label> <input type="email" id="email" required><br>
                 <label>{{ Lang::get('sitecore::reservations.subject') }}</label> <input type="text" id="subject" required><br>
                 <label>{{ Lang::get('sitecore::reservations.announce') }}</label> <input type="text" id="announce" required><br>
