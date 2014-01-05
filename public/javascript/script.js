@@ -251,8 +251,27 @@ $(document).ready(function(){
                 var dotw  = new Date(date).getDay();
                 dotw = dotw > 0 ? dotw - 1 : 6;
 
-                // Get opening hours
-                var hours = thing.opening_hours[dotw];
+                // No opening hours
+                if (thing.opening_hours.length == 0)
+                {
+                    var hours = {
+                        opens: ["00:00"],
+                        closes: ["24:00"]
+                    }
+                }
+                // Found opening hours for this day of the week
+                else if (thing.opening_hours.indexOf(dotw) != -1)
+                {
+                    var hours = thing.opening_hours[dotw];
+                }
+                // No opening hours for this day
+                else
+                {
+                    var hours = {
+                        opens: ["00:00", "24:00"],
+                        closes: ["00:00", "24:00"]
+                    }
+                }
 
                 // Convert start and end to seconds
                 opens = convertToSeconds(hours.opens[0]);
