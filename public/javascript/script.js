@@ -251,16 +251,8 @@ $(document).ready(function(){
                 var dotw  = new Date(date).getDay();
                 dotw = dotw > 0 ? dotw - 1 : 6;
 
-                // No opening hours
-                if (thing.opening_hours.length == 0)
-                {
-                    var hours = {
-                        opens: ["00:00"],
-                        closes: ["24:00"]
-                    }
-                }
                 // Found opening hours for this day of the week
-                else if (thing.opening_hours.indexOf(dotw) != -1)
+                if (thing.opening_hours.length && thing.opening_hours[dotw] != undefined)
                 {
                     var hours = thing.opening_hours[dotw];
                 }
