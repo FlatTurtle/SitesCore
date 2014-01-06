@@ -9,8 +9,8 @@ $font-color: #575757;
 $subtitle-color: #999999;
 $line-color: #DDD;
 
-$font-normal: "'Soho Gothic W01 Light', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
-$font-bold: "'Soho Gothic W01 Regular', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+$font-normal: "Soho Gothic W01 Light";
+$font-bold: "Soho Gothic W01 Regular";
 
 $blur-size: 50px;
 $nav-height: 60px;
@@ -19,7 +19,7 @@ $carousel-height: 600px;
 /* ============ General ============ */
 
 body {
-	font-family: $font-normal;
+	font-family: $font-normal, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	background-color: $body-color;
 	color: $font-color;
 	margin-top: $nav-height;
@@ -33,7 +33,7 @@ body {
 }
 
 strong, b {
-	font-family: $font-bold;
+	font-family: $font-bold, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* ============ Utilities ============ */
@@ -207,7 +207,7 @@ nav {
 		font-size: 150%;
 		text-decoration: none;
 		float: left;
-		font-family: $font-bold;
+		font-family: $font-bold, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	}
 
 	ul {
@@ -630,7 +630,7 @@ nav {
 
 	.ui-datepicker-title {
 		text-align: center;
-		font-family: $font-bold;
+		font-family: $font-bold, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		padding-bottom: 5px;
 		padding-top: 5px;
 	}
@@ -663,12 +663,12 @@ nav {
 
 		&.ui-state-highlight {
 			color: $font-color;
-			font-family: $font-normal;
+			font-family: $font-normal, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 		}
 
 		&.ui-state-active {
 			color: $font-color;
-			font-family: $font-normal;
+			font-family: $font-normal, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 			border: 1px solid $line-color;
 			border-radius: 5px;
 		}
