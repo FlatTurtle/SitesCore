@@ -323,6 +323,7 @@ $(document).ready(function(){
                 showSelection();
             }
 
+
             /**
              * Check the user time input
              */
@@ -346,6 +347,7 @@ $(document).ready(function(){
                         hours = ("0" + hours).slice(-2);
 
                         $('#reservations #timepicker #from').val(hours + ":" + minutes).trigger('change');
+                        return;
                     }
                 }
 
@@ -368,6 +370,7 @@ $(document).ready(function(){
                         hours = ("0" + hours).slice(-2);
 
                         $('#reservations #timepicker #to').val(hours + ":" + minutes).trigger('change');
+                        return;
                     }
                 }
 
@@ -386,6 +389,7 @@ $(document).ready(function(){
                     to = $('#reservations #timepicker #to').val();
                     $('#reservations #timepicker #from').trigger('change');
                     $('#reservations #timepicker #to').trigger('change');
+                    return;
                 }
 
                 // Convert time to seconds
@@ -486,15 +490,24 @@ $(document).ready(function(){
             {
                 if (typeof time == 'string')
                 {
-                    parts = time.split(':');
-                    return parts[0] * 60*60 + parts[1] * 60;
+                    if (time.indexOf(':') != -1)
+                    {
+                        parts = time.split(':');
+                        parts[0] = parseInt(parts[0]);
+                        parts[1] = parseInt(parts[1]);
+
+                        if (isNaN(parts[0])) parts[0] = 0;
+                        if (isNaN(parts[1])) parts[1] = 0;
+
+                        return parts[0] * 60*60 + parts[1] * 60;
+                    }
+
+                    return 0;
                 }
                 else if (time instanceof Date)
                 {
                     return time.getTime() % (86400 * 1000) / 1000;
                 }
-
-                return time;
             }
 
 
