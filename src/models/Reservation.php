@@ -5,6 +5,7 @@ use Exception;
 use Lang;
 use Config;
 use Validator;
+use Log;
 use Input;
 use Jenssegers\Model\Model;
 use Guzzle\Http\Client;
