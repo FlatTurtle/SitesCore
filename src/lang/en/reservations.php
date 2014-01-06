@@ -3,7 +3,7 @@
 return array(
 
     'title' => 'Reservations',
-    'subtitle' => 'Click on an item below to create a reservation.',
+    'subtitle' => 'Click on an item below to book a meeting room.',
     'date' => 'Select a date',
     'click-me' => 'Click me',
     'time' => 'Select time period',
