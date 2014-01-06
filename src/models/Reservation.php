@@ -77,13 +77,22 @@ class Reservation extends Model {
 		{
 			$response = $e->getResponse();
 
-			// Get JSON error message
-			$json = $response->json();
-			$errors = $json['errors'];
+			// Get JSON
+			$json = json_decode($response->getBody());
+
+			// Something went wrong, logging response
+			if (!$json)
+			{
+				Log::error((string) $response);
+				throw new Exception(Lang::get("sitecore::reservations.error"));
+			}
+
+			// Get errors
+			$errors = $json->errors;
 
 			// Only first error at this moment
 			$error = reset($errors);
-			$type = strtolower($error['type']);
+			$type = strtolower($error->type);
 
 			// Replace some characters
 			$type = str_replace(array(' ', '_', '.'), '-', $type);
