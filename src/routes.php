@@ -57,20 +57,6 @@ Route::any('/', function()
 	// Get template from configu
 	$template = Config::get('sitecore::template');
 
-	// Check if template is published
-	if (strstr($template, 'sitecore::'))
-	{
-		// The expected location of the published template file
-		$published = str_replace('sitecore::', 'flatturtle.sitecore.', $template);
-
-		// Check if it exists
-		if (View::exists($published))
-		{
-			// Use published template
-			$template = $published;
-		}
-	}
-
 	// Check if reservations are enabled
 	$reservations = Config::has('sitecore::passwords.reservations') && isset($flatturtle->interface->clustername);
 
