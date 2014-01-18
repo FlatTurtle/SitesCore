@@ -306,8 +306,11 @@ nav {
 	hr {
 		border-top-color: $line-color;
 		width: 75%;
-		margin-left: auto;
-		margin-right: auto;
+		margin: 40px auto;
+
+		.slim {
+			margin: 20px auto;
+		}
 	}
 
 	// disable gradient style for first block
@@ -674,4 +677,3 @@ nav {
 		}
 	}
 }
-
