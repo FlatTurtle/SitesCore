@@ -37,7 +37,11 @@
 
     <nav>
         <div class="container">
+            @if (Config::get('sitecore::logo'))
+            <img id="logo" src="{{ Config::get('sitecore::logo') }}">
+            @else
             <a id="brand" href="#">{{ $flatturtle->title }}</a>
+            @endif
             <ul>
             @foreach ($blocks as $block)
                 @if ($block->title)
