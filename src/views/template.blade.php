@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title>{{ $flatturtle->title }}</title>
     <link href="{{ URL::asset('packages/flatturtle/sitecore/css/common.css?v=' . filemtime(public_path() . '/packages/flatturtle/sitecore/css/common.css')) }}" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="https://fast.fonts.com/cssapi/66253153-9c89-413c-814d-60d3ba0d6ac2.css"/>
