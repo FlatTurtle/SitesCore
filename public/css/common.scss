@@ -101,25 +101,23 @@ h1.big {
 	#top-blur {
 		top: 0;
 
-		background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
-		background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+		background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0)));
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+		background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+		background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
 	}
 
 	#bottom-blur {
 		bottom: 0;
 
-		background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* IE10+ */
-		background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); /* W3C */
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+		background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+		background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
 	}
 
 	.item {
@@ -177,12 +175,12 @@ nav {
 		// Gradient
 		$start-color: rgba(255,255,255,0.3); // light
 		$end-color: rgba(0,0,0,0.2); // dark
-		background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top,  $start-color 0%, $end-color 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top,  $start-color 0%, $end-color 100%); /* Opera 11.10+ */
-		background: -ms-linear-gradient(top,  $start-color 0%, $end-color 100%); /* IE10+ */
-		background: linear-gradient(to bottom,  $start-color 0%, $end-color 100%); /* W3C */
+		background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));
+		background: -webkit-linear-gradient(top,  $start-color 0%, $end-color 100%);
+		background: -o-linear-gradient(top,  $start-color 0%, $end-color 100%);
+		background: -ms-linear-gradient(top,  $start-color 0%, $end-color 100%);
+		background: linear-gradient(to bottom,  $start-color 0%, $end-color 100%);
 
 		// Shadow
 		$shadow-blur: 5px;
@@ -201,12 +199,12 @@ nav {
 			// Gradient
 			$start-color: opacify($start-color, 0.05); // light
 			$end-color: opacify($end-color, 0.05); // dark
-			background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%); /* FF3.6+ */
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color)); /* Chrome,Safari4+ */
-			background: -webkit-linear-gradient(top,  $start-color 0%, $end-color 100%); /* Chrome10+,Safari5.1+ */
-			background: -o-linear-gradient(top,  $start-color 0%, $end-color 100%); /* Opera 11.10+ */
-			background: -ms-linear-gradient(top,  $start-color 0%, $end-color 100%); /* IE10+ */
-			background: linear-gradient(to bottom,  $start-color 0%, $end-color 100%); /* W3C */
+			background: -moz-linear-gradient(top,  $start-color 0%, $end-color 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));
+			background: -webkit-linear-gradient(top,  $start-color 0%, $end-color 100%);
+			background: -o-linear-gradient(top,  $start-color 0%, $end-color 100%);
+			background: -ms-linear-gradient(top,  $start-color 0%, $end-color 100%);
+			background: linear-gradient(to bottom,  $start-color 0%, $end-color 100%);
 		}
 	}
 
@@ -316,8 +314,7 @@ nav {
 	background: -webkit-linear-gradient(top,  $color 0%,#ffffff $location,#ffffff 100%);
 	background: -o-linear-gradient(top,  $color 0%,#ffffff $location,#ffffff 100%);
 	background: -ms-linear-gradient(top,  $color 0%,#ffffff $location,#ffffff 100%);
-	background: linear-gradient(to bottom,  $color 0%,#ffffff $location,#ffffff 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$color', endColorstr='#ffffff',GradientType=0);*/
+	background: linear-gradient(to bottom,  $color 0%,#ffffff $location,#ffffff 100%);*/
 
 }
 
@@ -540,7 +537,6 @@ nav {
 				background-image: -moz-linear-gradient(left bottom, $dark-color 0%, $dark-color 25%, $light-color 25%, $light-color 50%, $dark-color 50%, $dark-color 75%, $light-color 75%);
 				background-image: -ms-linear-gradient(left bottom, $dark-color 0%, $dark-color 25%, $light-color 25%, $light-color 50%, $dark-color 50%, $dark-color 75%, $light-color 75%);
 				background-image: -o-linear-gradient(left bottom, $dark-color 0%, $dark-color 25%, $light-color 25%, $light-color 50%, $dark-color 50%, $dark-color 75%, $light-color 75%);
-				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$dark-colorccc', endColorstr='$light-colorbbb',GradientType=0 );
 				background-image: linear-gradient(left bottom, $dark-color 0%, $dark-color 25%, $light-color 25%, $light-color 50%, $dark-color 50%, $dark-color 75%, $light-color 75%);
 				background-size: 25px 25px;
 				opacity: 1;
