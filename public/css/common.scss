@@ -79,6 +79,18 @@ h1.big {
 		height: 100%;
 	}
 
+	$carousel-orb-size: 15px;
+
+	.carousel-indicators li {
+		width: $carousel-orb-size;
+		height: $carousel-orb-size;
+
+		&.active {
+			width: $carousel-orb-size + 2px;
+			height: $carousel-orb-size + 2px;
+		}
+	}
+
 	#top-blur, #bottom-blur {
 		position: absolute;
 		width: 100%;
