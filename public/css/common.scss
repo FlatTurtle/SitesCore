@@ -22,7 +22,7 @@ body {
 	font-family: $font-normal, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	background-color: $body-color;
 	color: $font-color;
-	margin-top: $nav-height;
+	margin-top: $nav-height - 3px;
 	font-size: 16px;
 	line-height: 1.8em;
 }
@@ -81,6 +81,8 @@ h1.big {
 
 	.carousel-inner {
 		height: 100%;
+		border-left: 4px solid #FFF;
+		border-right: 4px solid #FFF;
 	}
 
 	$carousel-orb-size: 15px;
@@ -157,7 +159,17 @@ h1.big {
 		img {
 			top: 50%;
 			position: absolute;
-			margin-top: -65px;
+			margin-top: -30px;
+			background-color: #FFF;
+			width: 30px;
+		}
+
+		&.left img {
+			left: 0;
+		}
+
+		&.right img {
+			right: 0;
 		}
 	}
 }
