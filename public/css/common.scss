@@ -36,6 +36,10 @@ strong, b {
 	font-family: $font-bold, 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+iframe {
+	max-width: 100%;
+}
+
 /* ============ Utilities ============ */
 
 .center {
