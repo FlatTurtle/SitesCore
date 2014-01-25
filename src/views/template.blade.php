@@ -38,9 +38,9 @@
     <nav>
         <div class="container">
             @if (Config::get('sitecore::logo'))
-            <img id="logo" src="{{ Config::get('sitecore::logo') }}">
+            <a href="{{ URL::to('/') }}"><img id="logo" src="{{ Config::get('sitecore::logo') }}"></a>
             @else
-            <a id="brand" href="#">{{ $flatturtle->title }}</a>
+            <a id="brand" href="{{ URL::to('/') }}">{{ $flatturtle->title }}</a>
             @endif
             <ul>
             @foreach ($blocks as $block)
