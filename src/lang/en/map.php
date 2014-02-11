@@ -13,6 +13,6 @@ return array(
 	|
 	*/
 
-	'info' => 'click any icon for the next departure time.',
+	'info' => 'Click any icon for the next departure time.',
 
 );
