@@ -206,6 +206,11 @@
 @section('map')
 
     @if (Config::get("sitecore::map"))
+    <section id="map-info" class="block colorful">
+        <div class="container">
+        <img src="{{ URL::asset('packages/flatturtle/sitecore/images/hand.png') }}"> {{ Lang::get('sitecore::map.info') }}
+        </div>
+    </section>
     <section id="map" style="height: {{ Config::get('sitecore::map_height', '450px') }}">
         <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
             src="https://maps.flatturtle.com/{{ Config::get('sitecore::id') }}"
