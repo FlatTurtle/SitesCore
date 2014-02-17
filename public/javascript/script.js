@@ -8,6 +8,9 @@ $(document).ready(function(){
         interval: 5000
     });
 
+    // Fancybox
+    $(".fancybox").fancybox();
+
     // Open external links in new window
     $("a[href^='http']").not("[href*='" + location.hostname + "']").attr('target', '_blank');
 

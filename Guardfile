@@ -15,7 +15,7 @@ guard 'sass',
 
 guard :concat,
     type: 'js',
-    files: %w(jquery jquery.datepicker carousel script),
+    files: %w(jquery jquery.datepicker carousel jquery.fancybox script),
     input_dir: 'public/javascript',
     output: 'public/javascript/all'
 
