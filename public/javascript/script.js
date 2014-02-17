@@ -142,34 +142,6 @@ $(document).ready(function(){
             });
 
 
-            // Timepicker click event
-            $('#reservations #timepicker #bar').click(function(e)
-            {
-                var x = e.offsetX;
-                var perc = x / $(this).width();
-                var seconds = timeline_start + ((timeline_end - timeline_start) * perc);
-
-                var minutes = Math.floor((seconds % 3600) / 60);
-                var hours = Math.floor(seconds / 3600);
-
-                var from = $('#reservations #timepicker #from').val();
-                if (!from)
-                {
-                    $('#reservations #timepicker #from').val(hours + ':' + minutes);
-                    showSelection();
-                    return;
-                }
-
-                var to = $('#reservations #timepicker #to').val();
-                if (!to)
-                {
-                    $('#reservations #timepicker #to').val(hours + ':' + minutes);
-                    showSelection();
-                    return;
-                }
-            });
-
-
             // Load companies
             $.getJSON("https://reservations.flatturtle.com/" + cluster + "/companies", function(data)
             {
