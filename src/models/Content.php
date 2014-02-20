@@ -38,12 +38,25 @@ class Content extends Model {
 				$model = new Content;
 				$model->id = $id;
 				$model->type = pathinfo($file, PATHINFO_EXTENSION);
-				$model->html = File::get($file);
 
 				// Parse markdown
 				if ($model->type == 'md')
 				{
-					$model->html = Parsedown::instance()->parse($model->html);
+					$html = File::get($file);
+					$model->html = Parsedown::instance()->parse($html);
+				}
+				// Include php files
+				else if ($model->type == 'php')
+				{
+					ob_start();
+					include($file);
+					$model->html = ob_get_contents();
+					ob_end_clean();
+				}
+				// Other files
+				else
+				{
+					$model->html = File::get($file);
 				}
 
 				return $model;
