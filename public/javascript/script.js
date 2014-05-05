@@ -19,11 +19,14 @@ $(document).ready(function(){
     | Collapsed
     |--------------------------------------------------------------------------
     */
+    $('.expand').css('cursor', 'pointer');
     $('.collapsed').hide();
     $('.expand').click(function()
     {
         $(this).next('.collapsed').slideDown('slow');
+        $(this).remove();
     });
+
 
     /*
     |--------------------------------------------------------------------------
