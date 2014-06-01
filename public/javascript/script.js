@@ -48,6 +48,16 @@ $(document).ready(function(){
             firstDay: 1
         });
 
+        // Timepicker
+        $('.time').timepicker({
+            timeFormat: ' HH:mm',
+            stepMinute: 15,
+            showButtonPanel: false,
+            timeOnly: true,
+            hourMin: 1,
+            hourMax: 23
+        });
+
         // Re-highlight "done" parts
         var wasDoneOnHover = false;
         $('#reservations > div > div').hover(function()

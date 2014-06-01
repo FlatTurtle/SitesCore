@@ -177,7 +177,7 @@
                 <div id="labels"></div>
 
                 <div id="selection">
-                {{ Lang::get('sitecore::reservations.from') }} <input type="text" id="from" placeholder="00:00"> &nbsp; {{ Lang::get('sitecore::reservations.to') }} <input type="text" id="to" placeholder="00:00">
+                {{ Lang::get('sitecore::reservations.from') }} <input type="text" class="time" id="from" placeholder="00:00"> &nbsp; {{ Lang::get('sitecore::reservations.to') }} <input type="text" class="time" id="to" placeholder="00:00">
                 </div>
 
             </div>
@@ -251,6 +251,7 @@
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/jquery.datepicker.js?') }}"></script>
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/jquery.fancybox.js?') }}"></script>
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/carousel.js') }}"></script>
+    <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/jquery.timepicker.js') }}"></script>
     <script src="{{ URL::asset('packages/flatturtle/sitecore/javascript/script.js') }}"></script>
     @endif
 
