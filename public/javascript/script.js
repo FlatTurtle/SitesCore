@@ -305,14 +305,14 @@ $(document).ready(function(){
                 }
 
                 // Get existing reservations
-                $.getJSON("https://reservations.flatturtle.com/" + cluster + "/things/" + thing.name + "/reservations?day=" + date, function(data)
+                $.getJSON("https://reservations.flatturtle.com/" + cluster + "/things/" + escape(thing.name) + "/reservations?day=" + date, function(data)
                 {
                     // Loop existing reservations
                     for (var i in data)
                     {
                         var reservation = data[i];
-                        var from = new Date(reservation.from);
-                        var to   = new Date(reservation.to);
+                        var from = new Date(reservation.from).toTimeString();
+                        var to   = new Date(reservation.to).toTimeString();
 
                         // Draw reservation
                         drawBlock(from, to);
