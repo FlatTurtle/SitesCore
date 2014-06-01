@@ -45,7 +45,8 @@ $(document).ready(function(){
         // Datepicker
         $('.date').datepicker({
             dateFormat: 'yy-mm-dd',
-            firstDay: 1
+            firstDay: 1,
+            minDate: 0
         });
 
         // Timepicker
