@@ -52,7 +52,7 @@ class Content extends Model {
 					// Filename without .blade.php
 					$view = str_replace('.blade', '', pathinfo($file, PATHINFO_FILENAME));
 
-					$model->html = View::make($view);
+					$model->html = (string) View::make($view);
 				}
 				// Other files
 				else
