@@ -6,6 +6,7 @@ use Parsedown;
 use Cache;
 use File;
 use Config;
+use View;
 
 class Content extends Model {
 
