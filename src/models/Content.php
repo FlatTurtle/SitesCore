@@ -48,10 +48,10 @@ class Content extends Model {
 				// Include php files
 				else if ($model->type == 'php')
 				{
-					ob_start();
-					include($file);
-					$model->html = ob_get_contents();
-					ob_end_clean();
+					// Filename without .blade.php
+					$view = str_replace('.blade', '', pathinfo($file, PATHINFO_FILENAME));
+
+					$model->html = View::make($view);
 				}
 				// Other files
 				else

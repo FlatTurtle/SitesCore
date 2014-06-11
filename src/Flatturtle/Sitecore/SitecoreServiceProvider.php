@@ -38,6 +38,9 @@ class SitecoreServiceProvider extends ServiceProvider {
 		$this->app['command.flatturtle.install'] = new InstallCommand;
 		$this->app['command.flatturtle.update'] = new UpdateCommand;
     	$this->commands('command.flatturtle.install', 'command.flatturtle.update');
+
+    	// Add content folder to view environment
+    	$this->app['view']->addLocation(base_path() . '/content');
 	}
 
 	/**
