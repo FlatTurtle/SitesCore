@@ -16,8 +16,7 @@
         "classmap": [
             "src/controllers",
             "src/models",
-            "src/commands",
-            "src/libraries"
+            "src/commands"
         ],
         "psr-0": {
             "Flatturtle\\Sitecore": "src/"
