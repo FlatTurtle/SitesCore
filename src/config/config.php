@@ -13,20 +13,6 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Template File
-	|--------------------------------------------------------------------------
-	|
-	| The template file used to render the site. The default template is
-	| sitecore::template. If you wish to use your own template file, override
-	| this option with a valid template file, located in your app/views folder.
-	|
-	*/
-
-	'template' => 'sitecore::template',
-
-
-	/*
-	|--------------------------------------------------------------------------
 	| Content Directory
 	|--------------------------------------------------------------------------
 	*/

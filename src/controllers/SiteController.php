@@ -19,8 +19,8 @@ class SiteController extends Controller {
         // Carousel images
         $images = Image::all();
 
-        // Get template from configu
-        $template = Config::get('sitecore::template');
+        // Detect template
+        $template = View::exists('template') ? 'template' : Config::get('sitecore::template', 'sitecore::template');
 
         // Check if reservations are enabled
         $reservations = Config::has('sitecore::passwords.reservations') && isset($flatturtle->interface->clustername);
