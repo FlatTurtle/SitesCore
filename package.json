@@ -1,0 +1,23 @@
+{
+  "name": "SitesCore",
+  "version": "1.0.0",
+  "description": "The core of https://github.com/FlatTurtle/Sites",
+  "main": " ",
+  "devDependencies": {
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-sass": "^1.3.3",
+    "gulp-uglify": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FlatTurtle/SitesCore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlatTurtle/SitesCore/issues"
+  },
+  "homepage": "https://github.com/FlatTurtle/SitesCore"
+}
