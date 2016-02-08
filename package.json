@@ -4,11 +4,11 @@
   "description": "The core of https://github.com/FlatTurtle/Sites",
   "main": " ",
   "devDependencies": {
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
-    "gulp-concat": "^2.5.2",
-    "gulp-sass": "^1.3.3",
-    "gulp-uglify": "^1.1.0"
+    "del": "^2.2.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.2"
   },
   "repository": {
     "type": "git",
