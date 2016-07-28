@@ -15,7 +15,14 @@ gulp.task('clean', function(callback) {
 });
 
 gulp.task('js', function() {
-    return gulp.src(['public/javascript/jquery.js', 'public/javascript/*.js', '!public/javascript/all.js'])
+    return gulp.src(
+      ['public/javascript/jquery.js',
+      'public/javascript/jquery.datepicker.js',
+      'public/javascript/jquery.fancybox.js',
+      'public/javascript/jquery.timepicker.js',
+      'public/javascript/carousel.js',
+      'public/javascript/script.js',
+      '!public/javascript/all.js'])
         .pipe(concat('all.js'))
         .pipe(ignore.exclude([ "**/*.map" ]))
         .pipe(uglify().on('error', function(e){
