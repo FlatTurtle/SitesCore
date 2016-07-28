@@ -268,15 +268,14 @@ $(document).ready(function(){
 
                 // set correct timepickers
                 var openingHour = Math.floor(opens / 3600);
-                var closingHour = Math.floor(closes / 3600);
-                var closingMin = Math.floor((closes % 3600) / 60);
+                var closingHour = Math.floor(closes / 3600);                
                 $('#reservations #timepicker #from').timepicker({
                     timeFormat: ' HH:mm',
                     stepMinute: 15,
                     showButtonPanel: false,
                     timeOnly: true,
                     hourMin: openingHour,
-                    hourMax: closingHour
+                    hourMax: closingHour === 24 ? closingHour - 1 : closingHour
                 });
                 $('#reservations #timepicker #to').timepicker({
                     timeFormat: ' HH:mm',
@@ -284,7 +283,7 @@ $(document).ready(function(){
                     showButtonPanel: false,
                     timeOnly: true,
                     hourMin: openingHour,
-                    hourMax: closingMin === 0 ? closingHour - 1 : closingHour
+                    hourMax: closingHour === 24 ? closingHour - 1 : closingHour
                 });
 
                 // Round opening hours
