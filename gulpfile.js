@@ -18,9 +18,6 @@ gulp.task('js', function() {
     return gulp.src(['public/javascript/*.js', '!public/javascript/all.js'])
         .pipe(concat('all.js'))
         .pipe(ignore.exclude([ "**/*.map" ]))
-        .pipe(uglify().on('error', function(e){
-          console.log(e);
-        }))
         .pipe(gulp.dest('public/javascript'));
 });
 
