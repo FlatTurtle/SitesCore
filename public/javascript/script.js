@@ -49,16 +49,6 @@ $(document).ready(function(){
             minDate: 0
         });
 
-        // Timepicker
-        $('.time').timepicker({
-            timeFormat: ' HH:mm',
-            stepMinute: 15,
-            showButtonPanel: false,
-            timeOnly: true,
-            hourMin: 1,
-            hourMax: 23
-        });
-
         // Re-highlight "done" parts
         var wasDoneOnHover = false;
         $('#reservations > div > div').hover(function()
@@ -152,13 +142,14 @@ $(document).ready(function(){
                 var from = $('#reservations #timepicker #from').val();
 
                 var to = $('#reservations #timepicker #to').val();
-                if(!to){
+                if(!to || convertToSeconds(from) > convertToSeconds(to)){
                   var from_seconds = convertToSeconds(from);
-                  var timeString = convertToTimeString(from_seconds + 900); // add 15 minutes
-                  $('#reservations #timepicker #to').val(convertToTimeString(timeString)).trigger('change');
+                  var timeString = convertToTimeString(from_seconds + 1800); // add 30 minutes by default
+                  $('#reservations #timepicker #to').val(timeString);
                   showSelection();
                   return; // do not go to the next step as the user hasn't selected the second time himself
                 }
+
 
                 // Draw selection
                 showSelection();
