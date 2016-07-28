@@ -142,7 +142,7 @@ $(document).ready(function(){
                 var from = $('#reservations #timepicker #from').val();
 
                 var to = $('#reservations #timepicker #to').val();
-                if(!to || convertToSeconds(from) > convertToSeconds(to)){
+                if(!to || convertToSeconds(from) >= convertToSeconds(to)){
                   var from_seconds = convertToSeconds(from);
                   var timeString = convertToTimeString(from_seconds + 1800); // add 30 minutes by default
                   $('#reservations #timepicker #to').val(timeString);
