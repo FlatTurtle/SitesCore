@@ -150,10 +150,15 @@ $(document).ready(function(){
             $('#reservations #timepicker input').change(function()
             {
                 var from = $('#reservations #timepicker #from').val();
-                if (!from) return;
 
                 var to = $('#reservations #timepicker #to').val();
-                if (!to) return;
+                if(!to){
+                  var from_seconds = convertToSeconds(from);
+                  var timeString = convertToTimeString(from_seconds + 900); // add 15 minutes
+                  $('#reservations #timepicker #to').val(convertToTimeString(timeString)).trigger('change');
+                  showSelection();
+                  return; // do not go to the next step as the user hasn't selected the second time himself
+                }
 
                 // Draw selection
                 showSelection();
@@ -255,6 +260,7 @@ $(document).ready(function(){
                 if (thing.opening_hours.length && thing.opening_hours[dotw] != undefined)
                 {
                     var hours = thing.opening_hours[dotw];
+
                 }
                 // No opening hours for this day
                 else
@@ -268,6 +274,27 @@ $(document).ready(function(){
                 // Convert start and end to seconds
                 opens = convertToSeconds(hours.opens[0]);
                 closes = convertToSeconds(hours.closes[hours.closes.length - 1]);
+
+                // set correct timepickers
+                var openingHour = Math.floor(opens / 3600);
+                var closingHour = Math.floor(closes / 3600);
+                var closingMin = Math.floor((closes % 3600) / 60);
+                $('#reservations #timepicker #from').timepicker({
+                    timeFormat: ' HH:mm',
+                    stepMinute: 15,
+                    showButtonPanel: false,
+                    timeOnly: true,
+                    hourMin: openingHour,
+                    hourMax: closingMin === 0 ? closingHour - 1 : closingHour
+                });
+                $('#reservations #timepicker #to').timepicker({
+                    timeFormat: ' HH:mm',
+                    stepMinute: 15,
+                    showButtonPanel: false,
+                    timeOnly: true,
+                    hourMin: openingHour,
+                    hourMax: closingMin === 0 ? closingHour - 1 : closingHour
+                });
 
                 // Round opening hours
                 timeline_start = Math.floor(opens / 3600) * 3600;
@@ -399,20 +426,15 @@ $(document).ready(function(){
                 // Get duration in seconds
                 var duration = to - from;
 
-                if (duration % 3600 != 0)
+                // Duration is not allowed to be smaller than 15 minutes
+                if (duration % 900 < 0)
                 {
-                    // Round duration to nearest hour
-                    duration = Math.round(duration / 3600) * 3600;
+                    // Set duration on 15 minutes
+                    duration = 900;
 
-                    var seconds = from + duration;
-                    var minutes = Math.floor((seconds % 3600) / 60);
-                    var hours = Math.floor(seconds / 3600);
+                    var timeString = convertToTimeString(from + duration);
 
-                    // Add padding
-                    minutes = ("0" + minutes).slice(-2);
-                    hours = ("0" + hours).slice(-2);
-
-                    $('#reservations #timepicker #to').val(hours + ":" + minutes).trigger('change');
+                    $('#reservations #timepicker #to').val(timeString).trigger('change');
                 }
             }
 
@@ -510,7 +532,16 @@ $(document).ready(function(){
                 }
             }
 
+            function convertToTimeString(seconds){
+              var minutes = Math.floor((seconds % 3600) / 60);
+              var hours = Math.floor(seconds / 3600);
 
+              // Add padding
+              minutes = ("0" + minutes).slice(-2);
+              hours = ("0" + hours).slice(-2);
+
+              return hours + ":" + minutes;
+            }
         });
     }
 
