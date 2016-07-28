@@ -276,7 +276,7 @@ $(document).ready(function(){
                     showButtonPanel: false,
                     timeOnly: true,
                     hourMin: openingHour,
-                    hourMax: closingMin === 0 ? closingHour - 1 : closingHour
+                    hourMax: closingHour
                 });
                 $('#reservations #timepicker #to').timepicker({
                     timeFormat: ' HH:mm',
