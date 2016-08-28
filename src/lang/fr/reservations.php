@@ -18,7 +18,7 @@ return array(
     'comment' => 'Description (optional)',
     'button' => 'Submit reservation',
 
-    'success' => 'Reservation created',
+    'success' => 'Confirmation mail sent to your email address. <br/>Press the link in the confirmation mail to complete your reservation.',
 
     // Exceptions
     'error' => 'Something went wrong.',
