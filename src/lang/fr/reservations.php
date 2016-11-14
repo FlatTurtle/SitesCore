@@ -24,5 +24,10 @@ return array(
     'error' => 'Something went wrong.',
     'thing-unavailable' => 'Unable to book at that time.',
     'invalid-credentials' => 'The credentials you provided are invalid.',
-
+    'thing-alreadyreserved' => 'The room is already reserved at that time.',
+    'reservation-notfound' => 'We could not find the reservation you are looking for.',
+    'thing-notfound' => 'The room you are looking for could not be found.',
+    'writeaccessforbidden' => 'You are not allowed to make a reservation on behalf of another user.',
+    'payload-null' => 'No data was received by the server.',
+    'payload-invalid' => 'The data sent to the server was invalid.',
 );
