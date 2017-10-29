@@ -59,19 +59,20 @@
                         center: "title",
                         right: "month,agendaWeek,agendaDay"
                     },
-                    height: "75%",
+                    height: "auto",
                     // put your options and callbacks here
                     events: function(start, end, timezone, callback) {  
-                        var events =[];              
+                        var events =[ ];              
                         $.each(roomList, function(index, item) {
                             $.ajax({
                                 url: item.url,
                                 crossDomain: true,
+                                async:false,
                                 data: {
                                     start: start.format('YYYY-MM-DD'),
                                     end: end.format('YYYY-MM-DD')
                                 },
-                                success: function(data,textStatus) {    
+                                success: function(data, textStatus) {    
                                     
                                     $.each(data, function (i, reservation) {
                                         events.push({
@@ -81,7 +82,7 @@
                                             color: item.color
                                         });
                                     });
-                                             
+                                          
                                 },
                                 error: function (jqXHR, textStatus, errorThrown) {
                                     console.debug("Request failed: " + textStatus);
