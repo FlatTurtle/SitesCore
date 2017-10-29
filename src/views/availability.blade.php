@@ -59,9 +59,10 @@
                         center: "title",
                         right: "month,agendaWeek,agendaDay"
                     },
-                    height: "750%",
+                    height: "75%",
                     // put your options and callbacks here
-                    events: function(start, end, timezone, callback) {                
+                    events: function(start, end, timezone, callback) {  
+                        var events =[];              
                         $.each(roomList, function(index, item) {
                             $.ajax({
                                 url: item.url,
@@ -71,7 +72,7 @@
                                     end: end.format('YYYY-MM-DD')
                                 },
                                 success: function(data,textStatus) {    
-                                    var events = [];
+                                    
                                     $.each(data, function (i, reservation) {
                                         events.push({
                                             title: reservation.subject,
@@ -80,13 +81,14 @@
                                             color: item.color
                                         });
                                     });
-                                    callback(events);          
+                                             
                                 },
                                 error: function (jqXHR, textStatus, errorThrown) {
                                     console.debug("Request failed: " + textStatus);
                                 }
                             });
                         });
+                        callback(events); 
                     }
                 })
             });
