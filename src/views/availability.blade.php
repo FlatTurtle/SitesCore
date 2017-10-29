@@ -18,8 +18,8 @@
 
 </head>
 <body data-cluster="{{ $flatturtle->interface->clustername }}">
-    <ul id="legend" style="list-style:none"></ul>
-    <div id="calendar"></div>
+    <div style="float:left; margin-right: 50px;"<ul id="legend" style="list-style:none"></ul></div>
+    <div id="calendar" style="float:left; height:75%;"></div>
 
     <script
         src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -59,6 +59,7 @@
                         center: "title",
                         right: "month,agendaWeek,agendaDay"
                     },
+                    height: "90%",
                     // put your options and callbacks here
                     events: function(start, end, timezone, callback) {                
                         $.each(roomList, function(index, item) {
