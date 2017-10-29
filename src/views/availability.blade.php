@@ -60,6 +60,7 @@
                         right: "month,agendaWeek,agendaDay"
                     },
                     height: "auto",
+                    minTime: "06:00:00",
                     // put your options and callbacks here
                     events: function(start, end, timezone, callback) {  
                         var events =[ ];              

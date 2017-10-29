@@ -3,6 +3,8 @@
 return array(
 
     'title' => 'Reservations',
+    'availability' => "Check the room availability ",
+    'click' => "here",
     'subtitle' => 'Click on an item below to book a meeting room.',
     'date' => 'Select a date',
     'click-me' => 'Click me',

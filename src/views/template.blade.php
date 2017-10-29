@@ -160,6 +160,7 @@
     <section id="reservations" data-cluster="{{ $flatturtle->interface->clustername }}" class="block">
         <div class="container">
             <h1>{{ Lang::get('sitecore::reservations.title') }}</h1>
+            <h2>{{ Lang::get('sitecore::reservations.availability') }}<a target="_blank" href="{{ URL::to('/reservations/availability') }}">{{ Lang::get('sitecore::reservations.click) }}</a></h2>
             <h2>{{ Lang::get('sitecore::reservations.subtitle') }}</h2>
 
             <div id="things"></div>
