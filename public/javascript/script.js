@@ -80,7 +80,7 @@ $(document).ready(function(){
                 var thing = data[i];
 
                 // Create label
-                var label = $('<span class="label">' + thing.name + '</span>');
+                var label = $('<span class="label">' + thing.name + '<a href="/reservations/availability/' + thing.name + '" target="_blank">Schedule</a></span>');
 
                 // Set data
                 label.attr('data-name', thing.name);

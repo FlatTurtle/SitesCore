@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Controller;
 use Flatturtle\Sitecore\Models\Reservation;
+use Guzzle\Http\Client;
 
 class ReservationController extends Controller {
 
@@ -27,6 +28,13 @@ class ReservationController extends Controller {
         return Response::json(array(
             'message' => Lang::get('sitecore::reservations.success')
         ));
+    }
+
+    public function Availability() 
+    {
+        $availability = View::exists('availability') ? 'availability' : Config::get('sitecore::availability', 'sitecore::availability');
+   
+        return View::make($availability);
     }
 
 }
