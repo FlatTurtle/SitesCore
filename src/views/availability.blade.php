@@ -63,7 +63,7 @@
                     minTime: "06:00:00",
                     // put your options and callbacks here
                     events: function(start, end, timezone, callback) {  
-                        var events =[ ];              
+                        var events =[ ];
                         $.each(roomList, function(index, item) {
                             $.ajax({
                                 url: item.url,
@@ -73,17 +73,18 @@
                                     start: start.format('YYYY-MM-DD'),
                                     end: end.format('YYYY-MM-DD')
                                 },
-                                success: function(data, textStatus) {    
-                                    
+                                success: function(data, textStatus) {
+
                                     $.each(data, function (i, reservation) {
                                         events.push({
                                             title: reservation.subject,
                                             start: reservation.from,
                                             end: reservation.to,
+                                            company: reservation.company,
                                             color: item.color
                                         });
                                     });
-                                          
+
                                 },
                                 error: function (jqXHR, textStatus, errorThrown) {
                                     console.debug("Request failed: " + textStatus);
@@ -91,7 +92,10 @@
                             });
                         });
                         callback(events); 
-                    }
+                    },
+                    eventRender: function(event, element) {
+                        element.attr("company",event.company)
+                   }
                 })
             });
         });
