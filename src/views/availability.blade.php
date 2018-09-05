@@ -80,7 +80,7 @@
                                             title: reservation.subject,
                                             start: reservation.from,
                                             end: reservation.to,
-                                            company: reservation.company,
+                                            company: reservation.customer.company,
                                             color: item.color
                                         });
                                     });
@@ -94,7 +94,7 @@
                         callback(events); 
                     },
                     eventRender: function(event, element) {
-                        element.attr("company",event.company)
+                        $(element).append(event.company);
                    }
                 })
             });
