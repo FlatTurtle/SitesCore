@@ -158,48 +158,50 @@
 
     @if ($reservations)
     <section id="reservations" data-cluster="{{ $flatturtle->interface->clustername }}" class="block">
-        <div class="container">
-            <h1>{{ Lang::get('sitecore::reservations.title') }}</h1>
-            <h2>{{ Lang::get('sitecore::reservations.availability') }}
-                <a target="_blank" href="{{ URL::to('/reservations/availability') }}">{{ Lang::get('sitecore::reservations.click') }}</a>
-            </h2>
-            <h2>{{ Lang::get('sitecore::reservations.subtitle') }}</h2>
+        <form>
+            <div class="container">
+                <h1>{{ Lang::get('sitecore::reservations.title') }}</h1>
+                <h2>{{ Lang::get('sitecore::reservations.availability') }}
+                    <a target="_blank" href="{{ URL::to('/reservations/availability') }}">{{ Lang::get('sitecore::reservations.click') }}</a>
+                </h2>
+                <h2>{{ Lang::get('sitecore::reservations.subtitle') }}</h2>
 
-            <div id="things"></div>
+                <div id="things"></div>
 
-            <div id="datepicker">
-                <h2>{{ Lang::get('sitecore::reservations.date') }}</h2>
-                <input type="text" class="date" required placeholder="{{ Lang::get('sitecore::reservations.click-me') }}">
-            </div>
+                <div id="datepicker">
+                    <h2>{{ Lang::get('sitecore::reservations.date') }}<span style="color:red">*</span></h2>
+                    <input type="text" class="date" required placeholder="{{ Lang::get('sitecore::reservations.click-me') }}">
+                </div>
 
-            <div id="timepicker">
+                <div id="timepicker">
 
-                <h2>{{ Lang::get('sitecore::reservations.time') }}</h2>
+                    <h2>{{ Lang::get('sitecore::reservations.time') }}</h2>
 
-                <div id="bar"></div>
-                <div id="labels"></div>
+                    <div id="bar"></div>
+                    <div id="labels"></div>
 
-                <div id="selection">
-                {{ Lang::get('sitecore::reservations.from') }} <input type="text" class="time" id="from" placeholder="00:00"> &nbsp; {{ Lang::get('sitecore::reservations.to') }} <input type="text" class="time" id="to" placeholder="00:00">
+                    <div id="selection">
+                    {{ Lang::get('sitecore::reservations.from') }} <input type="text" class="time" id="from" placeholder="00:00"> &nbsp; {{ Lang::get('sitecore::reservations.to') }} <input type="text" class="time" id="to" placeholder="00:00">
+                    </div>
+
+                </div>
+
+                <div id="details">
+                    <h2>{{ Lang::get('sitecore::reservations.details') }}</h2>
+
+                    <label>{{ Lang::get('sitecore::reservations.company') }}<span style="color:red">*</span></label> <select id="company" required></select><br>
+                    <label>{{ Lang::get('sitecore::reservations.email') }}<span style="color:red">*</span></label> <input type="email" id="email" required><br>
+                    <label>{{ Lang::get('sitecore::reservations.subject') }}<span style="color:red">*</span></label> <input type="text" id="subject" required><br>
+                    <label>{{ Lang::get('sitecore::reservations.announce') }}</label> <input type="text" id="announce"><br>
+
+                    <textarea id="comment" placeholder="{{ Lang::get('sitecore::reservations.comment') }}"></textarea><br>
+                    <div id="message"></div>
+
+                    <button class="btn colorful">{{ Lang::get('sitecore::reservations.button') }}</button>
                 </div>
 
             </div>
-
-            <div id="details">
-                <h2>{{ Lang::get('sitecore::reservations.details') }}</h2>
-
-                <label>{{ Lang::get('sitecore::reservations.company') }}</label> <select id="company" required></select><br>
-                <label>{{ Lang::get('sitecore::reservations.email') }}</label> <input type="email" id="email" required><br>
-                <label>{{ Lang::get('sitecore::reservations.subject') }}</label> <input type="text" id="subject" required><br>
-                <label>{{ Lang::get('sitecore::reservations.announce') }}</label> <input type="text" id="announce" required><br>
-
-                <textarea id="comment" placeholder="{{ Lang::get('sitecore::reservations.comment') }}"></textarea><br>
-                <div id="message"></div>
-
-                <button class="btn colorful">{{ Lang::get('sitecore::reservations.button') }}</button>
-            </div>
-
-        </div>
+        </form>
     </section>
     @endif
 
