@@ -178,7 +178,7 @@ $(document).ready(function(){
             $('#reservations #details button').click(function(event)
             {
                 event.preventDefault();
-                if ($("#reservation_form").valid()) {
+                if ($("#reservation_form")[0].checkValidity()) {
                     var from = $('#reservations #timepicker #from').val();
                     var to = $('#reservations #timepicker #to').val();
                     var date = $('#reservations #datepicker input').val();
