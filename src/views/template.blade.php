@@ -158,7 +158,7 @@
 
     @if ($reservations)
     <section id="reservations" data-cluster="{{ $flatturtle->interface->clustername }}" class="block">
-        <form>
+        <form id="reservation_form">
             <div class="container">
                 <h1>{{ Lang::get('sitecore::reservations.title') }}</h1>
                 <h2>{{ Lang::get('sitecore::reservations.availability') }}
