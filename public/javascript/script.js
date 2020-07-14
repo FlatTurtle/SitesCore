@@ -175,8 +175,9 @@ $(document).ready(function(){
 
 
             // Submit reservation
-            $('#reservations #details button').click(function()
+            $('#reservations #details button').click(function(event)
             {
+                event.preventDefault();
                 if ($("#reservation_form").valid()) {
                     var from = $('#reservations #timepicker #from').val();
                     var to = $('#reservations #timepicker #to').val();
