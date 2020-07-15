@@ -228,6 +228,8 @@ $(document).ready(function(){
                             }
                         }
                     });
+                } else {
+                    $("#reservation_form")[0].reportValidity();
                 }
             });
 
