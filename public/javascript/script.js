@@ -286,14 +286,15 @@ $(document).ready(function(){
                 } else {
                   maxTime = maxTime + "pm";
                 }
-
+                console.log("MaxTime: " + maxTime);
+                console.log("MinTime: " + minTime);
                 $('#reservations #timepicker #from').timepicker({
                     timeFormat: ' HH:mm',
                     stepMinute: 15,
                     showButtonPanel: false,
                     timeOnly: true,
-                    minTime: minTime,
-                    maxTime: maxTime
+                    minHour: openingHour,
+                    maxHour: closingHour
                 });
                 $('#reservations #timepicker #to').timepicker({
                     timeFormat: ' HH:mm',
