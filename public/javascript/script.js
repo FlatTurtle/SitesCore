@@ -175,57 +175,62 @@ $(document).ready(function(){
 
 
             // Submit reservation
-            $('#reservations #details button').click(function()
+            $('#reservations #details button').click(function(event)
             {
-                var from = $('#reservations #timepicker #from').val();
-                var to = $('#reservations #timepicker #to').val();
-                var date = $('#reservations #datepicker input').val();
+                event.preventDefault();
+                if ($("#reservation_form")[0].checkValidity()) {
+                    var from = $('#reservations #timepicker #from').val();
+                    var to = $('#reservations #timepicker #to').val();
+                    var date = $('#reservations #datepicker input').val();
 
-                // Form data
-                data = {
-                    name:       thing.name,
-                    type:       thing.type,
-                    cluster:    cluster,
-                    company:    $('#reservations select#company').val(),
-                    email:      $('#reservations input#email').val(),
-                    subject:    $('#reservations input#subject').val(),
-                    announce:   $('#reservations input#announce').val(),
-                    from:       date + " " + from,
-                    to:         date + " " + to,
-                    comment:    $('#reservations textarea#comment').val(),
-                }
-
-                // Clear error message
-                $('#reservations #details #message').removeClass('error').removeClass('success').html('');
-
-                // Send data to "proxy"
-                $.ajax
-                ({
-                    type: "POST",
-                    url: "reserve",
-                    data: data,
-                    dataType: "json",
-                    success: function(response)
-                    {
-                        // Set success message
-                        $('#reservations #details #message').addClass('success').html(response.message);
-                    },
-                    error: function(response)
-                    {
-                        // Get JSON exception
-                        exception = response.responseJSON;
-
-                        if (exception && exception.error && exception.error.message)
-                        {
-                            $('#reservations #details #message').addClass('error').html(exception.error.message);
-                        }
-                        else
-                        {
-                            // Fallback
-                            $('#reservations #details #message').addClass('error').html("Something went wrong");
-                        }
+                    // Form data
+                    data = {
+                        name:       thing.name,
+                        type:       thing.type,
+                        cluster:    cluster,
+                        company:    $('#reservations select#company').val(),
+                        email:      $('#reservations input#email').val(),
+                        subject:    $('#reservations input#subject').val(),
+                        announce:   $('#reservations input#announce').val(),
+                        from:       date + " " + from,
+                        to:         date + " " + to,
+                        comment:    $('#reservations textarea#comment').val(),
                     }
-                });
+
+                    // Clear error message
+                    $('#reservations #details #message').removeClass('error').removeClass('success').html('');
+
+                    // Send data to "proxy"
+                    $.ajax
+                    ({
+                        type: "POST",
+                        url: "reserve",
+                        data: data,
+                        dataType: "json",
+                        success: function(response)
+                        {
+                            // Set success message
+                            $('#reservations #details #message').addClass('success').html(response.message);
+                        },
+                        error: function(response)
+                        {
+                            // Get JSON exception
+                            exception = response.responseJSON;
+
+                            if (exception && exception.error && exception.error.message)
+                            {
+                                $('#reservations #details #message').addClass('error').html(exception.error.message);
+                            }
+                            else
+                            {
+                                // Fallback
+                                $('#reservations #details #message').addClass('error').html("Something went wrong");
+                            }
+                        }
+                    });
+                } else {
+                    $("#reservation_form")[0].reportValidity();
+                }
             });
 
 
