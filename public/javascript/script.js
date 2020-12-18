@@ -274,18 +274,19 @@ $(document).ready(function(){
                 // set correct timepickers
                 var openingHour = Math.floor(opens / 3600);
                 var closingHour = Math.floor(closes / 3600);                
-                var minTime =  hours.opens[0];
-                if (openingHour < 12) {
-                  minTime = minTime + "am";
-                } else {
-                  minTime = minTime +"pm";
+               
+                var amPmOpeningHour = openingHour % 12;
+                if (amPmOpeningHour === 0) {
+                  amPmOpeningHour = 12;
                 }
-                var maxTime = hours.closes[hours.closes.length -1];
-                if (closingHour < 12) {
-                  maxTime = maxTime + "am";
-                } else {
-                  maxTime = maxTime + "pm";
+                var minTime = amPmOpeningHour + ":" +  hours.opens[0].split(":")[1] + amPmOpeningHour < 12 ? "am" : "pm";
+                
+                var amPmClosingHour = closingHour % 12;
+                if (amPmClosingHour === 0) {
+                  amPmClosingHour = 12;
                 }
+                var maxTime = amPmClosingHour + ":" +  hours.closes[hours.closes.length -1].split(":")[1] + amPmClosingHour < 12 ? "am" : "pm";
+                
                 console.log("MaxTime: " + maxTime);
                 console.log("MinTime: " + minTime);
                 $('#reservations #timepicker #from').timepicker({
@@ -293,8 +294,8 @@ $(document).ready(function(){
                     stepMinute: 15,
                     showButtonPanel: false,
                     timeOnly: true,
-                    minHour: openingHour,
-                    maxHour: closingHour
+                    minTime: minTime,
+                    maxTime: maxTime
                 });
                 $('#reservations #timepicker #to').timepicker({
                     timeFormat: ' HH:mm',
