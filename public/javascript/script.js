@@ -269,21 +269,34 @@ $(document).ready(function(){
                 // set correct timepickers
                 var openingHour = Math.floor(opens / 3600);
                 var closingHour = Math.floor(closes / 3600);                
+                var minTime =  hours.opens[0];
+                if (openingHour < 12) {
+                  minTime = minTime + "am";
+                } else {
+                  minTime = minTime +"pm";
+                }
+                var maxTime = hours.closes[hours.closes.length -1];
+                if (closingHour < 12) {
+                  maxTime = maxTime + "am";
+                } else {
+                  maxTime = maxTime + "pm";
+                }
+
                 $('#reservations #timepicker #from').timepicker({
                     timeFormat: ' HH:mm',
                     stepMinute: 15,
                     showButtonPanel: false,
                     timeOnly: true,
-                    hourMin: openingHour,
-                    hourMax: closingHour === 24 ? closingHour - 1 : closingHour
+                    minTime: minTime,
+                    maxTime: maxTime
                 });
                 $('#reservations #timepicker #to').timepicker({
                     timeFormat: ' HH:mm',
                     stepMinute: 15,
                     showButtonPanel: false,
                     timeOnly: true,
-                    hourMin: openingHour,
-                    hourMax: closingHour === 24 ? closingHour - 1 : closingHour
+                    minTime: minTime,
+                    maxTime: maxTime
                 });
 
                 // Round opening hours
